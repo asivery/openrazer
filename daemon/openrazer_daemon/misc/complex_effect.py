@@ -17,7 +17,7 @@ def hex2rgb(hx):
         )
     except:
         return (255, 0, 0)
-def transmute_keyboard_matrix_from_polychromatic(raw_matrix):
+def convert_nested_keyboard_hex_matrix_to_rgb_tuples(raw_matrix):
     # Iterate over the columns
     for column in raw_matrix.values():
         # Iterate over the rows

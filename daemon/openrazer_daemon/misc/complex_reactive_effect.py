@@ -10,7 +10,7 @@ import threading
 import time
 
 # pylint: disable=import-error
-from openrazer_daemon.misc.complex_effect import ComplexEffectThread, ComplexEffectManager, transmute_keyboard_matrix_from_polychromatic
+from openrazer_daemon.misc.complex_effect import ComplexEffectThread, ComplexEffectManager, convert_nested_keyboard_hex_matrix_to_rgb_tuples
 
 def scale_colour(colour, scale):
     return tuple(x * scale for x in colour)
@@ -19,7 +19,7 @@ class ReactiveEffectThread(ComplexEffectThread):
     EFFECT_NAME = "reactive2"
 
     def load_config_file(self, json_data):
-        self._matrix_map = transmute_keyboard_matrix_from_polychromatic(json_data['matrix'])
+        self._matrix_map = convert_nested_keyboard_hex_matrix_to_rgb_tuples(json_data['matrix'])
 
     def run(self):
         """

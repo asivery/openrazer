@@ -10,7 +10,7 @@ import time
 
 # pylint: disable=import-error
 from openrazer_daemon.keyboard import KeyboardColour
-from openrazer_daemon.misc.complex_effect import ComplexEffectThread, ComplexEffectManager, transmute_keyboard_matrix_from_polychromatic
+from openrazer_daemon.misc.complex_effect import ComplexEffectThread, ComplexEffectManager, convert_nested_keyboard_hex_matrix_to_rgb_tuples
 
 
 class RippleEffectThread(ComplexEffectThread):
@@ -27,7 +27,7 @@ class RippleEffectThread(ComplexEffectThread):
         self._mode = 1
 
     def load_config_file(self, json_data):
-        self._matrix_map = transmute_keyboard_matrix_from_polychromatic(json_data['matrix'])
+        self._matrix_map = convert_nested_keyboard_hex_matrix_to_rgb_tuples(json_data['matrix'])
         try:
             self._mode = json_data['mode']
         except:
